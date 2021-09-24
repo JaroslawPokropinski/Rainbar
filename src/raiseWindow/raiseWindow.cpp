@@ -18,3 +18,10 @@ bool raiseWindow(const HWND toRise, const HWND toLower)
 {
   return SetWindowPos(toRise, toLower, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 }
+
+bool IsTopMost(HWND hwnd)
+{
+  WINDOWINFO info;
+  GetWindowInfo(hwnd, &info);
+  return (info.dwExStyle & WS_EX_TOPMOST) ? true : false;
+}

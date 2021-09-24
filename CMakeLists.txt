@@ -26,6 +26,7 @@ file(GLOB SOURCE_FILES
 add_library(libs STATIC ${SOURCE_LIBS})
 
 add_library(Rainbar SHARED ${SOURCE_FILES})
+# add_executable (Rainbar src/main.cpp)
 
 find_package (Threads)
 target_link_libraries(Rainbar ${CMAKE_CURRENT_SOURCE_DIR}/rainmeter/x64/Rainmeter.lib)

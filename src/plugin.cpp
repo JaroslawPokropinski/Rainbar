@@ -18,9 +18,14 @@ void raise(HWND b, HWND a, int rate, std::future<void> futureObj)
 {
   while (futureObj.wait_for(std::chrono::milliseconds(1)) == std::future_status::timeout)
   {
-    if (isAbove(a, b))
+    if (IsTopMost(a) && isAbove(a, b))
     {
+      ShowWindow(b, SW_SHOW);
       raiseWindow(b, a);
+    }
+    if (!IsTopMost(a))
+    {
+      ShowWindow(b, SW_HIDE);
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(rate));
   }
